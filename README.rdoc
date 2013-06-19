@@ -5,9 +5,9 @@ This is a simple Rails app using couchrest_model gem.
 
 
 
-Installing CouchDB
----
+===Installing CouchDB
 I use homebrew to install couchdb on my mac
+
 $ brew install couchdb
   
 I use build-couchdb to install couchdb on linux.
