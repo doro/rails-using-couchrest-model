@@ -36,3 +36,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+
+gem 'couchrest_model', '~> 1.1.0'
+
