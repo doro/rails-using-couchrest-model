@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<strong><%= @article.title %></strong><br />
+by: <%= @article.author_name %><br /><br />
+<%= @article.body %><br /><br />
+
+<% @article.tags.each do |t| %>
+  <%= link_to t,tag(t) %>
+<% end %>
+
+<br />
+<br />
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>

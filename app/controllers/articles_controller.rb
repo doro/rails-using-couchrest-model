@@ -40,7 +40,11 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(params[:article])
+    # parsing tags from string to array, spliting using comma and trimming
+    article_params = params[:article]
+    article_params["tags"] = string_to_array article_params["tags_string"]
+
+    @article = Article.new(article_params)
 
     respond_to do |format|
       if @article.save
@@ -80,4 +84,16 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  private
+
+  # given a string returns an array of strings, using comma as a separator, stripping white spaces
+  # returns empty array if str is nil or empty 
+  def string_to_array(str)
+    return [] if str.blank?
+    return str.split(",").each{|t| t.strip!} if str.class == String
+    return []
+  end
+
 end

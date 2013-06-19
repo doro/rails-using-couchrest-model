@@ -8,6 +8,9 @@ class Article < CouchRest::Model::Base
 
   timestamps!
 
+  def tags_string
+    tags.join(",")
+  end
 
   design do
     view :by_author
