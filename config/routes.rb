@@ -1,5 +1,6 @@
 Armchair::Application.routes.draw do
   resources :articles
+  get "articles/tag/:tag" => "articles#tag"
 
   root :to => "articles#index"
   # The priority is based upon order of creation:

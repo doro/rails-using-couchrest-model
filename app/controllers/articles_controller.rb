@@ -86,6 +86,20 @@ class ArticlesController < ApplicationController
   end
 
 
+  # GET /articles
+  # GET /articles.json
+  def tag
+    tag = params[:tag]
+    @articles = Article.by_tags.startkey([tag]).endkey([tag, {}]).descending.limit(10)
+    Rails.logger.info "articles length: #{@articles.length}"
+
+    respond_to do |format|
+      format.html { render :action => :index }
+      format.json { render json: @articles }
+    end
+  end
+
+
   private
 
   # given a string returns an array of strings, using comma as a separator, stripping white spaces
