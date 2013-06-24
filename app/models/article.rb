@@ -15,6 +15,15 @@ class Article < CouchRest::Model::Base
   design do
     view :by_author
     view :by_published_at
+    view :by_tags,
+      :map =>
+        "function(doc) {
+          if (doc['type'] == 'Article' && doc.tags != null) {
+            doc.tags.forEach(function(tag) {
+              emit([tag, doc['published_at']], [tag, doc.title]);
+            });
+          }
+        }"
   end
 
 
