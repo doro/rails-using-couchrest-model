@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_filter :fetch_tags_list
+
   # GET /articles
   # GET /articles.json
   def index
@@ -110,4 +112,7 @@ class ArticlesController < ApplicationController
     return []
   end
 
+  def fetch_tags_list
+    @tags_list = Article.tags_list.reduce.group_level(1).rows
+  end
 end

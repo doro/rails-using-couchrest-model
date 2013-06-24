@@ -24,7 +24,20 @@ class Article < CouchRest::Model::Base
             });
           }
         }"
+
+
+    view :tags_list,
+      :map => 
+        "function(doc) { 
+          if(doc['type'] == 'Article' && doc.tags != null) { 
+            doc.tags.forEach(function(tag) {
+              emit(tag, 1); 
+            });
+          }
+        }",
+      :reduce => 
+        "function(keys, values, rereduce) { 
+          return sum(values);
+        }"
   end
-
-
 end
