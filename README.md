@@ -36,3 +36,10 @@ $ rake
 
 $ build/bin/couchdb
 
+
+##Why CouchDB
+CouchDB is considered a database for the web.
+It uses JSON for docutments, Javascript for map-reduce queries  Http for an API.
+
+It is a Document Oriented Database: it stores documents, which are semi-structured data items.
+Each document can be compared to a record in an RDBMS, but a document is less structured from a record.
